@@ -6,25 +6,26 @@ import { FormatedPokemonProps } from "models/homeContextProps";
 import { pokemonsListMapper } from "store/mappers/pokemonsListMapper";
 
 export const HomeContainer = () => {
-  const [pokemonsData, setPokemonsData] = useState<Array<FormatedPokemonProps>>(
-    []
-  );
+  const [pokemonsData, setPokemonsData] = useState<FormatedPokemonProps[]>([]);
   const [filteredPokemons, setFilteredPokemons] = useState<
-    Array<FormatedPokemonProps>
+    FormatedPokemonProps[]
   >([]);
-  const [favoritePokemons, setFavoritePokemons] = useState<Array<string>>([]);
+  const [favoritePokemons, setFavoritePokemons] = useState<string[]>([]);
+  const [pokemonsTypesFilter, setPokemonsTypesFilter] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [inputValue, setInputValue] = useState<string>("");
+
+  const handleFavoritePokemons = (id: string) => {
+    setFavoritePokemons((oldArray: string[]) => [...oldArray, id]);
+  };
 
   const loadData = async () => {
     const result = await getPokemons();
     const formatedData = await pokemonsListMapper(
       result.data.results,
-      favoritePokemons,
-      setFavoritePokemons
+      handleFavoritePokemons
     );
 
-    console.log(formatedData);
     setPokemonsData(formatedData);
     setFilteredPokemons(formatedData);
     setLoading(false);
@@ -45,6 +46,8 @@ export const HomeContainer = () => {
         setFilteredPokemons,
         favoritePokemons,
         setFavoritePokemons,
+        pokemonsTypesFilter,
+        setPokemonsTypesFilter,
         loading,
         setLoading,
         inputValue,

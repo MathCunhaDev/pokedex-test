@@ -1,7 +1,13 @@
+import { GlobalStyle } from "theme/global";
 import { HomeContainer } from "./components/containers/HomeContainer";
 
 function App() {
-  return <HomeContainer />;
+  return (
+    <>
+      <GlobalStyle />
+      <HomeContainer />
+    </>
+  );
 }
 
 export default App;

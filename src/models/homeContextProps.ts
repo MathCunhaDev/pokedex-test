@@ -5,6 +5,8 @@ export interface HomeContextProps {
   setFilteredPokemons: (array: FormatedPokemonProps[]) => void;
   favoritePokemons: string[];
   setFavoritePokemons: (array: string[]) => void;
+  pokemonsTypesFilter: string[];
+  setPokemonsTypesFilter: (array: string[]) => void;
   inputValue: string;
   setInputValue: (value: string) => void;
   loading: boolean;
@@ -31,6 +33,6 @@ export interface FormatedPokemonProps {
   image: React.ReactElement;
   name: string;
   registry: string;
-  types: string;
+  types: Array<string>;
   favorite: React.ReactElement;
 }

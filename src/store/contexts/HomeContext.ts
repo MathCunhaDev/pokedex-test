@@ -14,6 +14,10 @@ const HomeContextIntialValues: HomeContextProps = {
   setFavoritePokemons: () => {
     throw new Error("not implemented");
   },
+  pokemonsTypesFilter: [],
+  setPokemonsTypesFilter() {
+    throw new Error("not implemented");
+  },
   inputValue: "",
   setInputValue: () => {
     throw new Error("not implemented");

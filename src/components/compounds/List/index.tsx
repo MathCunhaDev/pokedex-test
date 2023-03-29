@@ -9,6 +9,7 @@ export const List = ({ data, headers, isLoading }: ListProps) => {
       <S.List
         dataSource={data}
         columns={headers}
+        showSorterTooltip={{ title: "Clique para ordenar" }}
         loading={{
           indicator: <S.TableSpin size="large" />,
           spinning: isLoading,
